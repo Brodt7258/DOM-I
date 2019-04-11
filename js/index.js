@@ -54,3 +54,20 @@ console.log(ctaButton);
 let ctaImg = document.getElementById('cta-img');
 console.log(ctaImg);
 
+let mainContent = document.getElementsByClassName('main-content')[0];
+
+let mcH4 = mainContent.querySelectorAll('h4');
+console.log(mcH4);
+
+let mcP = mainContent.querySelectorAll('p');
+console.log(mcP);
+
+let midImg = document.getElementById('middle-img');
+console.log(midImg);
+
+let contact = document.getElementsByClassName('contact')[0];
+console.log(contact);
+
+let footer = document.querySelector('footer p');
+console.log(footer);
+
