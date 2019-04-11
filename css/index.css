@@ -297,3 +297,11 @@ footer {
         margin: 20px;
     }
 }
+
+/* Stretch Goal Stuff */
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
