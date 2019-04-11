@@ -41,33 +41,49 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
+
 // Nav
 document.querySelectorAll('nav a')
-.forEach((e, i) => e.textContent = siteContent.nav[`nav-item-${i}`]);
+  .forEach((e, i) => e.textContent = siteContent.nav[`nav-item-${i}`]);
+
 
 // CTA
-document.querySelector('.cta-text h1').textContent = siteContent.cta.h1;
+document.querySelector('.cta-text h1')
+  .textContent = siteContent.cta.h1;
 
-document.querySelector('.cta-text button').textContent = siteContent.cta.button;
+document.querySelector('.cta-text button')
+  .textContent = siteContent.cta.button;
 
-document.getElementById('cta-img').setAttribute('src', siteContent.cta['img-src']);
+document.getElementById('cta-img')
+  .setAttribute('src', siteContent.cta['img-src']);
+
 
 // Main Content
-let mainContent = document.getElementsByClassName('main-content')[0];
+const mainContent = document.getElementsByClassName('main-content')[0];
 
-let mcH4 = mainContent.querySelectorAll('h4');
-console.log(mcH4);
+const h4Vals = Object.keys(siteContent['main-content']) // Create a new array of all the textContent relevant to the h4 elements
+  .filter(e => e.includes('h4'))
+  .map(e => siteContent['main-content'][e]);
 
-let mcP = mainContent.querySelectorAll('p');
-console.log(mcP);
+mainContent.querySelectorAll('h4')
+  .forEach((e, i) => e.textContent = h4Vals[i]);
 
-let midImg = document.getElementById('middle-img').setAttribute('src', siteContent['main-content']['middle-img-src']);
-console.log(midImg);
+const contentVals = Object.keys(siteContent['main-content'])
+  .filter(e => e.includes('content'))
+  .map(e => siteContent['main-content'][e]);
+
+mainContent.querySelectorAll('p')
+  .forEach((e, i) => e.textContent = contentVals[i]);
+
+document.getElementById('middle-img')
+  .setAttribute('src', siteContent['main-content']['middle-img-src']);
+
 
 // Contacts
 const contactInfo = Object.values(siteContent.contact);
-const contactEls = document.querySelector('.contact').children;
-contactInfo.forEach((e, i) => contactEls[i].textContent = e); //kind of backwards, but HTMLCollections suck
+document.querySelector('.contact').querySelectorAll('*') //Ok, so hear me out: .children is an HTMLCollection, which is trash.  This offers a NodeList instead.
+  .forEach((e, i) => e.textContent = contactInfo[i]);    //It's totally doable with the HTMLCollection.  This is just more succint, imo.
+
 
 // Footer
 document.querySelector('footer p').textContent = siteContent.footer.copyright;
