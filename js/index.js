@@ -43,8 +43,8 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 
 // Nav
-document.querySelectorAll('nav a')
-  .forEach((e, i) => e.textContent = siteContent.nav[`nav-item-${i}`]);
+const navLinks = document.querySelectorAll('nav a');
+navLinks.forEach((e, i) => e.textContent = siteContent.nav[`nav-item-${i}`]);
 
 
 // CTA
@@ -87,3 +87,19 @@ document.querySelector('.contact').querySelectorAll('*') //Ok, so hear me out: .
 
 // Footer
 document.querySelector('footer p').textContent = siteContent.footer.copyright;
+
+
+// "New Content"
+navLinks.forEach(e => e.style.color = 'green');
+
+const nav = document.querySelector('nav');
+
+const prepend = document.createElement('a');
+prepend.textContent = 'Prepend';
+nav.prepend(prepend);
+
+const append = document.createElement('a');
+append.textContent = 'Append';
+nav.appendChild(append);
+
+
