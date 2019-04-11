@@ -52,7 +52,7 @@ document.querySelector('.cta-text button').textContent = siteContent.cta.button;
 
 document.getElementById('cta-img').setAttribute('src', siteContent.cta['img-src']);
 
-
+// Main Content
 let mainContent = document.getElementsByClassName('main-content')[0];
 
 let mcH4 = mainContent.querySelectorAll('h4');
@@ -61,12 +61,13 @@ console.log(mcH4);
 let mcP = mainContent.querySelectorAll('p');
 console.log(mcP);
 
-let midImg = document.getElementById('middle-img');
+let midImg = document.getElementById('middle-img').setAttribute('src', siteContent['main-content']['middle-img-src']);
 console.log(midImg);
 
-let contact = document.getElementsByClassName('contact')[0];
-console.log(contact);
+// Contacts
+const contactInfo = Object.values(siteContent.contact);
+const contactEls = document.querySelector('.contact').children;
+contactInfo.forEach((e, i) => contactEls[i].textContent = e); //kind of backwards, but HTMLCollections suck
 
-let footer = document.querySelector('footer p');
-console.log(footer);
-
+// Footer
+document.querySelector('footer p').textContent = siteContent.footer.copyright;
