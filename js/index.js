@@ -109,13 +109,8 @@ mainContent.style.marginBottom = '4rem';
 document.getElementById('theme-change').onclick = (() => {
   let toggle = false;
   return () => {
+    const dark = 'background: #222; color: #ddd;';
     toggle = !toggle;
-    if (toggle) {
-      document.body.style.background = '#222';
-      document.body.style.color = '#ddd';
-    } else {
-      document.body.style.background = 'white';
-      document.body.style.color = 'black';
-    }
+    document.body.style.cssText = toggle ? dark : '';
   }
 })();
