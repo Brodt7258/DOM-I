@@ -81,8 +81,8 @@ document.getElementById('middle-img')
 
 // Contacts
 const contactInfo = Object.values(siteContent.contact);
-document.querySelector('.contact').querySelectorAll('*') //Ok, so hear me out: .children is an HTMLCollection, which is trash.  This offers a NodeList instead.
-  .forEach((e, i) => e.textContent = contactInfo[i]);    //It's totally doable with the HTMLCollection.  This is just more succint, imo.
+[...document.querySelector('.contact').children]
+  .forEach((e, i) => e.textContent = contactInfo[i]);
 
 
 // Footer
@@ -118,4 +118,4 @@ document.getElementById('theme-change').onclick = (() => {
       document.body.style.color = 'black';
     }
   }
-})()
+})();
